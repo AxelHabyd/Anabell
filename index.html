@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Para ti, mi amor | Declaración Especial</title>
-    <!-- Google Fonts: fuentes elegantes y modernas -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (gratuito) para iconos de corazones, flores, etc -->
+    <!-- Google Fonts: solo los estilos necesarios -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* decoración de flores fijas en los laterales (opcional) */
+        /* decoración de flores fijas - sin cambios, no afecta rendimiento */
         .flower-deco {
             position: fixed;
             font-size: 2.5rem;
@@ -31,18 +31,9 @@
             z-index: 0;
             pointer-events: none;
         }
-        .flower-left {
-            bottom: 5%;
-            left: 1%;
-            transform: rotate(-15deg);
-        }
-        .flower-right {
-            top: 15%;
-            right: 1%;
-            transform: rotate(20deg);
-        }
+        .flower-left { bottom: 5%; left: 1%; transform: rotate(-15deg); }
+        .flower-right { top: 15%; right: 1%; transform: rotate(20deg); }
 
-        /* contenedor principal con capa semitransparente para legibilidad */
         .container {
             max-width: 1300px;
             margin: 0 auto;
@@ -66,7 +57,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 2px 2px 12px rgba(0,0,0,0.2);
             letter-spacing: 1px;
         }
         .hero p {
@@ -85,19 +75,18 @@
             letter-spacing: 8px;
         }
 
-        /* secciones comunes */
+        /* secciones - eliminado backdrop-filter: blur() que es muy pesado */
         section {
             margin-bottom: 5rem;
-            background: rgba(46, 18, 44, 0.7);
-            backdrop-filter: blur(4px);
+            background: rgba(46, 18, 44, 0.7); /* más opaco para compensar falta de blur */
             border-radius: 48px;
             padding: 2rem 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             transition: transform 0.2s ease;
             border: 1px solid rgba(200, 130, 170, 0.3);
         }
         section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         .section-title {
             font-family: 'Playfair Display', serif;
@@ -108,16 +97,14 @@
             border-left: 5px solid #b56576;
             border-right: 5px solid #b56576;
             display: inline-block;
-            width: auto;
             padding: 0 1.5rem;
-            letter-spacing: 1px;
         }
         .title-wrapper {
             text-align: center;
             margin-bottom: 2.5rem;
         }
 
-        /* Galería de imágenes estilo moderno con grid */
+        /* Galería optimizada para imágenes */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -129,39 +116,33 @@
             background: rgba(255, 240, 250, 0.1);
             border-radius: 28px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-            backdrop-filter: blur(4px);
+            transition: transform 0.2s ease;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
             width: 100%;
             max-width: 300px;
             border: 1px solid rgba(241, 97, 150, 0.5);
         }
         .card-img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 25px 35px -10px #2f0e2e;
-            border-color: #d48f9b;
+            transform: scale(1.02);
+            box-shadow: 0 12px 22px rgba(0,0,0,0.3);
         }
         .card-img img {
             width: 100%;
             height: 260px;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s;
-        }
-        .card-img:hover img {
-            transform: scale(1.02);
+            background-color: #4a2a42; /* color de fondo mientras carga */
         }
         .img-caption {
             text-align: center;
             padding: 0.9rem;
             font-weight: 500;
-            background: rgba(114, 47, 55, 0.5);
+            background: rgba(114, 47, 55, 0.6);
             font-size: 0.9rem;
-            letter-spacing: 1px;
             color: #fce4ec;
         }
 
-        /* sección poemas: estilo elegante */
+        /* poemas - eliminado backdrop-filter: blur() */
         .poems-container {
             display: flex;
             flex-wrap: wrap;
@@ -169,15 +150,14 @@
             justify-content: center;
         }
         .poem-card {
-            background: rgba(49, 25, 48, 0.7);
-            backdrop-filter: blur(5px);
+            background: rgba(49, 25, 48, 0.85);
             border-radius: 40px;
             padding: 1.8rem;
             width: 280px;
-            transition: all 0.3s;
+            transition: all 0.2s;
             border-left: 4px solid #b86f7c;
             border-right: 4px solid #c78494;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
         }
         .poem-card i {
             font-size: 2rem;
@@ -187,7 +167,6 @@
         }
         .poem-card p {
             font-style: italic;
-            font-weight: 400;
             line-height: 1.6;
             font-size: 1rem;
             margin: 0.8rem 0;
@@ -197,27 +176,18 @@
             font-size: 0.85rem;
             margin-top: 1rem;
             color: #e3bed5;
-            font-weight: 300;
         }
 
-        /* corazones animados y flotantes */
+        /* corazones animados - optimizados (menos elementos) */
         .floating-hearts {
-            position: relative;
-            min-height: 220px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
             text-align: center;
-            overflow: hidden;
-            background: rgba(33, 12, 31, 0.4);
+            background: rgba(33, 12, 31, 0.6);
             border-radius: 60px;
             padding: 2rem 1rem;
         }
         .floating-hearts h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            font-weight: 600;
         }
         .heart-animation-area {
             display: flex;
@@ -231,19 +201,17 @@
             animation: floatHeart 3s infinite ease-in-out;
             display: inline-block;
             color: #ff99bb;
-            filter: drop-shadow(0 0 4px #ff4d6d);
         }
         @keyframes floatHeart {
             0% { transform: translateY(0px) scale(1); opacity: 0.7; }
-            50% { transform: translateY(-20px) scale(1.2); opacity: 1; color: #ffb7c5; }
+            50% { transform: translateY(-15px) scale(1.1); opacity: 1; }
             100% { transform: translateY(0px) scale(1); opacity: 0.7; }
         }
-        /* flores decorativas internas */
         .flower-icon {
             font-size: 2rem;
             margin: 0 8px;
             display: inline-block;
-            animation: spinFlower 8s infinite linear;
+            animation: spinFlower 10s infinite linear;
             color: #c38d9e;
         }
         @keyframes spinFlower {
@@ -251,7 +219,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Botón romántico sorpresa */
+        /* Botón */
         .btn-special {
             background: linear-gradient(135deg, #722f37, #9e4a62);
             border: none;
@@ -261,34 +229,29 @@
             padding: 12px 30px;
             border-radius: 60px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             margin-top: 25px;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
             font-family: 'Poppins', sans-serif;
             display: inline-flex;
             align-items: center;
             gap: 12px;
         }
         .btn-special:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
             background: linear-gradient(135deg, #8f3e4b, #b15d77);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.4);
         }
         .sorpresa-mensaje {
             margin-top: 1.5rem;
-            background: #fae1ec20;
-            backdrop-filter: blur(12px);
+            background: rgba(250, 225, 236, 0.2);
             border-radius: 48px;
             padding: 1rem 1.8rem;
             font-size: 1.2rem;
             font-weight: 500;
             display: inline-block;
-            max-width: 90%;
-            transition: all 0.4s;
             border: 1px solid #ffb7cf;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             margin-top: 2rem;
@@ -298,45 +261,34 @@
             color: #dbbad2;
         }
 
-        /* responsividad */
         @media (max-width: 750px) {
-            .container {
-                padding: 1rem;
-            }
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .poem-card {
-                width: 100%;
-                max-width: 320px;
-            }
+            .container { padding: 1rem; }
+            .hero h1 { font-size: 2.4rem; }
+            .section-title { font-size: 1.8rem; }
+            .poem-card { width: 100%; max-width: 320px; }
         }
-        /* corazones generados por js con clase extra */
+
+        /* corazones flotantes (JS) - animación más ligera */
         .extra-heart {
             position: fixed;
             font-size: 1.5rem;
             pointer-events: none;
             z-index: 999;
-            animation: fadeUp 1.8s ease-out forwards;
+            animation: fadeUp 1.5s ease-out forwards;
             color: #f28faf;
         }
         @keyframes fadeUp {
-            0% { transform: translateY(0) scale(0.5); opacity: 1; }
-            100% { transform: translateY(-120px) scale(1.2); opacity: 0; }
+            0% { transform: translateY(0) scale(0.6); opacity: 0.8; }
+            100% { transform: translateY(-100px) scale(1.1); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-<!-- flores decorativas fijas -->
 <div class="flower-deco flower-left"><i class="fas fa-seedling"></i><i class="fas fa-leaf"></i>🌸</div>
 <div class="flower-deco flower-right"><i class="fas fa-fan"></i>🌺🌷</div>
 
 <div class="container">
-    <!-- Sección Hero -->
     <div class="hero">
         <h1>Mi vida, eres mi amor</h1>
         <div class="heart-divider">
@@ -345,43 +297,41 @@
         <p>Porque cada latido me recuerda lo afortunado que soy de tenerte. Esta página es solo una pequeña muestra de todo lo que siento por ti.</p>
     </div>
 
-    <!-- Sección de Imágenes (Galería romántica) - AHORA CON 6 MÓDULOS DE IMAGEN -->
+    <!-- Sección de imágenes con lazy loading + decoding async -->
     <section>
         <div class="title-wrapper">
             <h2 class="section-title"><i class="fas fa-camera-retro"></i> Nuestros Momentos</h2>
         </div>
         <div class="gallery">
             <div class="card-img">
-                <img src="img/20260125_133530.jpg" alt="Eres hermosa bb">
+                <img src="img/20260125_133530.jpg" alt="Eres hermosa bb" loading="lazy" decoding="async">
                 <div class="img-caption">Eres hermosa bb</div>
             </div>
             <div class="card-img">
-                <img src="img/20260217_162817.jpg" alt="Cada momento contigo">
+                <img src="img/20260217_162817.jpg" alt="Cada momento contigo" loading="lazy" decoding="async">
                 <div class="img-caption">Cada momento contigo</div>
             </div>
             <div class="card-img">
-                <img src="img/20260217_183441.jpg" alt="Tu risa, mi vino favorito">
+                <img src="img/20260217_183441.jpg" alt="Tu risa, mi vino favorito" loading="lazy" decoding="async">
                 <div class="img-caption">Tu risa, mi vino favorito</div>
             </div>
             <div class="card-img">
-                <img src="img/20260326_131502.jpg" alt="Me gusta estar a tu lado">
+                <img src="img/20260326_131502.jpg" alt="Me gusta estar a tu lado" loading="lazy" decoding="async">
                 <div class="img-caption">Me gusta estar a tu lado</div>
             </div>
-            <!-- Nuevo módulo de imagen 5 -->
             <div class="card-img">
-                <img src="img/IMG-20260328-WA0410.jpg" alt="Eres el arte que me encanta ver">
+                <img src="img/IMG-20260328-WA0410.jpg" alt="Eres el arte que me encanta ver" loading="lazy" decoding="async">
                 <div class="img-caption">Eres el arte que me encanta ver</div>
             </div>
-            <!-- Nuevo módulo de imagen 6 -->
             <div class="card-img">
-                <img src="img/IMG-20260315-WA0178.jpg" alt="Apreciarte es mi mayor placer">
+                <img src="img/IMG-20260315-WA0178.jpg" alt="Apreciarte es mi mayor placer" loading="lazy" decoding="async">
                 <div class="img-caption">Apreciarte es mi mayor placer</div>
             </div>
         </div>
         <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;"><i class="fas fa-heart" style="color:#e6a0b0;"></i> Cada foto es un tesoro que guardo con mi alma <i class="fas fa-heart" style="color:#e6a0b0;"></i></p>
     </section>
 
-    <!-- Sección de Poemas -->
+    <!-- Poemas (sin cambios) -->
     <section>
         <div class="title-wrapper">
             <h2 class="section-title"><i class="fas fa-feather-alt"></i> Versos para Ti</h2>
@@ -410,12 +360,11 @@
         </div>
     </section>
 
-    <!-- Sección Corazones + Flores animadas -->
+    <!-- Corazones y flores (con menos animaciones pesadas) -->
     <section>
         <div class="floating-hearts">
             <h3><i class="fas fa-heart" style="color:#ff99bb;"></i> Corazones que bailan por ti <i class="fas fa-heart" style="color:#ff99bb;"></i></h3>
             <div class="heart-animation-area" id="heartZone">
-                <!-- corazones animados estáticos + dinámicos con JS se añaden -->
                 <i class="fas fa-heart dynamic-heart"></i>
                 <i class="fas fa-heart dynamic-heart" style="animation-delay: 0.4s;"></i>
                 <i class="fas fa-heart dynamic-heart" style="animation-delay: 0.8s;"></i>
@@ -433,7 +382,7 @@
         </div>
     </section>
 
-    <!-- Botón sorpresa y declaración especial -->
+    <!-- Botón sorpresa -->
     <section style="text-align: center;">
         <div class="title-wrapper">
             <h2 class="section-title"><i class="fas fa-gem"></i> Una sorpresa para ti</h2>
@@ -453,150 +402,131 @@
 
 <script>
     (function() {
-        // Crear corazones flotantes adicionales al azar en toda la página (efecto romántico)
+        // Control de cantidad de corazones flotantes (para no saturar)
+        let activeHearts = 0;
+        const MAX_HEARTS = 12;
+
         function createFloatingHeart() {
+            if (activeHearts >= MAX_HEARTS) return;
+            activeHearts++;
             const heart = document.createElement('i');
             heart.classList.add('fas', 'fa-heart', 'extra-heart');
-            const size = Math.random() * 20 + 14; // entre 14px y 34px
+            const size = Math.random() * 18 + 12; // 12-30px
             heart.style.fontSize = size + 'px';
             heart.style.left = Math.random() * window.innerWidth + 'px';
             heart.style.bottom = '0px';
             heart.style.position = 'fixed';
-            heart.style.opacity = Math.random() * 0.6 + 0.4;
+            heart.style.opacity = Math.random() * 0.5 + 0.4;
             const colors = ['#c17b9e', '#d497b0', '#b85c7a', '#aa6f9e', '#e3a7c2'];
             heart.style.color = colors[Math.floor(Math.random() * colors.length)];
             heart.style.zIndex = '9999';
             document.body.appendChild(heart);
             setTimeout(() => {
                 heart.remove();
-            }, 2000);
+                activeHearts--;
+            }, 1800);
         }
-        // Lanzar corazones cada 1.2 segundos
+
+        // Corazones cada 2 segundos (menos frecuencia)
         setInterval(() => {
-            if (document.visibilityState === 'visible') {
+            if (document.visibilityState === 'visible' && activeHearts < MAX_HEARTS - 2) {
                 createFloatingHeart();
             }
-        }, 1300);
-        
-        // También agregar corazones al hacer click en cualquier parte? sutileza
+        }, 2000);
+
+        // Corazón al hacer clic (pero limitado)
         document.body.addEventListener('click', function(e) {
-            // si el click no es sobre el botón principal para evitar duplicidad, igual creamos uno extra
-            if(!e.target.closest('#btnDeclaracion')) {
+            if (!e.target.closest('#btnDeclaracion') && activeHearts < MAX_HEARTS) {
                 const miniHeart = document.createElement('i');
                 miniHeart.classList.add('fas', 'fa-heart', 'extra-heart');
-                miniHeart.style.fontSize = '18px';
+                miniHeart.style.fontSize = '16px';
                 miniHeart.style.left = e.clientX + 'px';
                 miniHeart.style.top = e.clientY + 'px';
                 miniHeart.style.position = 'fixed';
                 miniHeart.style.color = '#eaa9c2';
-                miniHeart.style.pointerEvents = 'none';
                 miniHeart.style.transform = 'translate(-50%, -50%)';
-                miniHeart.style.animation = 'fadeUp 1.2s ease-out forwards';
                 document.body.appendChild(miniHeart);
-                setTimeout(() => miniHeart.remove(), 1200);
+                activeHearts++;
+                setTimeout(() => {
+                    miniHeart.remove();
+                    activeHearts--;
+                }, 1200);
             }
         });
-        
-        // Botón de declaración con mensaje especial + flores emergentes
+
+        // Botón de declaración optimizado (menos elementos voladores)
         const btn = document.getElementById('btnDeclaracion');
         const mensajeDiv = document.getElementById('mensajeSorpresa');
-        
         const mensajesAmor = [
             "🌹 TE AMO con cada fibra de mi ser. Eres la dueña de mis sueños y mi presente más bonito. 🌹",
             "💜 Eres el 'te quiero' que nunca termina, mi lugar seguro. Cada día te elijo mi amour. 💜",
             "🍷 Como el vino, nuestro amor madura y se vuelve más profundo. Gracias por ser mi calma y mi pasión. 🍷",
             "🌸 Desde que llegaste todo es más hermoso. Quiero estar contigo. 🌸"
         ];
-        
         let index = 0;
+
         btn.addEventListener('click', () => {
-            // mostrar mensaje con animación
             const msg = mensajesAmor[index % mensajesAmor.length];
             const newMsg = document.createElement('div');
             newMsg.className = 'sorpresa-mensaje';
-            newMsg.innerHTML = `<i class="fas fa-heart" style="margin-right:8px;"></i> ${msg} <i class="fas fa-heart" style="margin-left:8px;"></i>`;
-            // si ya hay mensaje previo lo reemplazamos con suavidad
-            if(mensajeDiv.firstChild) {
-                mensajeDiv.removeChild(mensajeDiv.firstChild);
-            }
+            newMsg.innerHTML = `<i class="fas fa-heart"></i> ${msg} <i class="fas fa-heart"></i>`;
+            if (mensajeDiv.firstChild) mensajeDiv.removeChild(mensajeDiv.firstChild);
             mensajeDiv.appendChild(newMsg);
-            // también lanzar lluvia de flores y corazones adicionales
-            for(let i=0;i<18;i++) {
+            
+            // Solo 6 elementos voladores en lugar de 18
+            for (let i = 0; i < 6; i++) {
                 setTimeout(() => {
-                    const flying = document.createElement('i');
-                    const iconType = Math.random() > 0.5 ? 'fas fa-heart' : 'fas fa-fan';
-                    flying.className = `${iconType} extra-heart`;
-                    if(iconType === 'fas fa-fan') flying.classList.add('fa-fan');
-                    flying.style.fontSize = (Math.random() * 24 + 12) + 'px';
-                    flying.style.left = Math.random() * window.innerWidth + 'px';
-                    flying.style.bottom = '0px';
-                    flying.style.position = 'fixed';
-                    flying.style.color = `hsl(${Math.random() * 40 + 300}, 70%, 65%)`;
-                    flying.style.animation = 'fadeUp 2s ease-out forwards';
-                    flying.style.pointerEvents = 'none';
-                    document.body.appendChild(flying);
-                    setTimeout(() => flying.remove(), 2000);
-                }, i * 70);
+                    if (activeHearts < MAX_HEARTS) {
+                        const flying = document.createElement('i');
+                        const iconType = Math.random() > 0.6 ? 'fas fa-heart' : 'fas fa-fan';
+                        flying.className = `${iconType} extra-heart`;
+                        flying.style.fontSize = (Math.random() * 18 + 12) + 'px';
+                        flying.style.left = Math.random() * window.innerWidth + 'px';
+                        flying.style.bottom = '0px';
+                        flying.style.position = 'fixed';
+                        flying.style.color = `hsl(${Math.random() * 40 + 300}, 70%, 65%)`;
+                        document.body.appendChild(flying);
+                        activeHearts++;
+                        setTimeout(() => {
+                            flying.remove();
+                            activeHearts--;
+                        }, 1800);
+                    }
+                }, i * 80);
             }
             index++;
-            
-            // efecto de confeti de corazones muy sutil con creación adicional
-            const confettiHeart = setInterval(() => {
-                if (document.querySelectorAll('.extra-heart').length < 40) {
-                    const cHeart = document.createElement('i');
-                    cHeart.className = 'fas fa-heart extra-heart';
-                    cHeart.style.fontSize = '16px';
-                    cHeart.style.left = Math.random() * window.innerWidth + 'px';
-                    cHeart.style.top = '80%';
-                    cHeart.style.position = 'fixed';
-                    cHeart.style.animation = 'fadeUp 1.5s ease-out forwards';
-                    document.body.appendChild(cHeart);
-                    setTimeout(() => cHeart.remove(), 1500);
-                } else {
-                    clearInterval(confettiHeart);
-                }
-            }, 180);
-            setTimeout(() => clearInterval(confettiHeart), 2500);
         });
-        
-        // efecto extra: cada vez que se cargan las imágenes, hover suave ya está en CSS
-        // añadir más corazones dinámicos en la zona de corazones de forma aleatoria cada cierto tiempo
+
+        // Agregar corazones dinámicos en la zona de corazones (pero menos frecuente)
         const heartZone = document.getElementById('heartZone');
         setInterval(() => {
-            if(heartZone && heartZone.children.length < 12) {
+            if (heartZone && heartZone.children.length < 8) {
                 const newHeart = document.createElement('i');
                 newHeart.classList.add('fas', 'fa-heart', 'dynamic-heart');
-                newHeart.style.animationDelay = (Math.random() * 2) + 's';
-                newHeart.style.fontSize = '1.8rem';
+                newHeart.style.animationDelay = (Math.random() * 1.5) + 's';
+                newHeart.style.fontSize = '1.6rem';
                 newHeart.style.margin = '0 5px';
                 heartZone.appendChild(newHeart);
                 setTimeout(() => {
-                    if(newHeart.parentNode) newHeart.remove();
-                }, 4000);
+                    if (newHeart.parentNode) newHeart.remove();
+                }, 3500);
             }
-        }, 3000);
-        
-        // también incluir flores giratorias en la sección de corazones (ya hay) y mensaje de bienvenida con efecto
+        }, 4000); // cada 4 segundos en lugar de 3
+
+        // Estilo extra para animación suave del mensaje
         const styleExtra = document.createElement('style');
         styleExtra.textContent = `
-            .fa-fan {
-                display: inline-block;
-            }
             .sorpresa-mensaje {
-                animation: aparecerSuave 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+                animation: aparecerSuave 0.4s ease-out;
             }
             @keyframes aparecerSuave {
-                0% { opacity: 0; transform: scale(0.9); }
+                0% { opacity: 0; transform: scale(0.95); }
                 100% { opacity: 1; transform: scale(1); }
             }
         `;
         document.head.appendChild(styleExtra);
-        
-        // pequeños poemas interactivos en consola? pero es solo para la experiencia
-        console.log("%c✨ Para el amor de mi vida: Te adoro con todo mi ser ✨", "color: #c792b8; font-size: 16px; font-weight: bold;");
+        console.log("%c✨ Página optimizada para que las imágenes vuelen ✨", "color: #c792b8; font-size: 14px;");
     })();
 </script>
-
-<!-- Nota: Las imágenes utilizadas son de placeholder hermosas de picsum, reflejan momentos románticos abstractos. Se pueden reemplazar por fotos reales de la pareja -->
 </body>
 </html>
